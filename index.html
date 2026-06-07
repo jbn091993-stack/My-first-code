@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Facts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            line-height: 1.6;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .fact-counter {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Fun Facts</h1>
+        <div class="fact-box" id="factBox">
+            Click the button to discover a fun fact!
+        </div>
+        <button onclick="displayRandomFact()">Get a Fun Fact</button>
+        <div class="fact-counter" id="counter">Total facts available: 20</div>
+    </div>
+
+    <script>
+        const facts = [
+            "🐙 Octopuses have three hearts and blue blood!",
+            "🍌 Bananas are berries, but strawberries aren't!",
+            "🌎 Honey never spoils. Archaeologists have found 3,000-year-old honey in Egypt that was still edible!",
+            "👶 Babies are born with about 300 bones, but adults have only 206 because some fuse together.",
+            "🦅 An eagle can see a rabbit from 2 miles away.",
+            "🧠 Your brain uses about 20% of your body's energy, despite being only 2% of your body's weight.",
+            "🦑 Squids can change color in milliseconds!",
+            "☕ Coffee is the second most traded commodity in the world after oil.",
+            "🐢 Turtles have been around since the time of dinosaurs.",
+            "⚡ Lightning is hotter than the surface of the sun - about 5 times hotter!",
+            "🍕 Americans eat about 100 acres of pizza per day!",
+            "👅 Your tongue is the only muscle attached to only one end.",
+            "🌙 The Moon is slowly moving away from Earth at about 1.5 inches per year.",
+            "🦁 A lion's roar can be heard from 5 miles away.",
+            "🎵 Music you like makes your brain release dopamine, a feel-good chemical.",
+            "🌈 A group of flamingos is called a 'flamboyance.'",
+            "💎 Diamonds are made of carbon, the same element in pencil lead.",
+            "🐕 Dogs have about 18 muscles in their ears to move them around.",
+            "🌻 Sunflowers can track the sun's movement across the sky during the day.",
+            "🧂 You lose most of your taste ability when you lose your sense of smell."
+        ];
+
+        function displayRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factBox = document.getElementById('factBox');
+            factBox.textContent = facts[randomIndex];
+            factBox.style.animation = 'none';
+            setTimeout(() => {
+                factBox.style.animation = 'fadeIn 0.5s ease-in';
+            }, 10);
+        }
+
+        // Add fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0.5;
+                    transform: scale(0.98);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
